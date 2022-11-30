@@ -1,0 +1,4 @@
+argostranslate
+natsort == 8.2.0
+nltk == 3.7
+pycryptodome
