@@ -15,6 +15,7 @@ class Translate:
         nltk.download("punkt")
 
     def _download_languages(self, lang: str):
+        argostranslate.package.update_package_index()
         available_packages = argostranslate.package.get_available_packages()
         available_packages = next(
             filter(
