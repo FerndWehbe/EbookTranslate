@@ -15,8 +15,9 @@ def parse_text(content, tradutor: Translate):
         en_text = p.string
         if en_text:
             tokens = tradutor.tokenizer(en_text)
-            new_text = tradutor.parallel(tokens, 2)
-            new_p.string = "".join(new_text)
+            # new_text = tradutor.parallel(tokens, 2)
+            new_text = tradutor.translator(tokens)
+            new_p.string = "".join(new_text)  # type: ignore
             p.insert_after(new_p)
         else:
             new_p.string = ""
@@ -24,5 +25,4 @@ def parse_text(content, tradutor: Translate):
 
         p.string = ""
         p.unwrap()
-
-    print(soup)
+    return soup

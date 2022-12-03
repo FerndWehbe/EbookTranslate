@@ -131,3 +131,6 @@ dmypy.json
 
 # Vscode
 .vscode/
+
+# Scripts
+move_to_android.txt

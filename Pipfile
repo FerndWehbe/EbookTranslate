@@ -10,6 +10,7 @@ nltk = "==3.7"
 pycryptodome = "*"
 ebooklib = "*"
 bs4 = "*"
+ipython = "*"
 
 [dev-packages]
 pylama = "*"

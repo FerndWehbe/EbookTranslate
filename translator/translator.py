@@ -12,7 +12,8 @@ ITranslation = argostranslate.translate.ITranslation
 
 class Translate:
     def __init__(self) -> None:
-        nltk.download("punkt")
+        # nltk.download("punkt")
+        pass
 
     def _download_languages(self, lang: str):
         argostranslate.package.update_package_index()
@@ -51,7 +52,7 @@ class Translate:
 
     def _create_chuncks(self, list_data: list, num_chunks: int) -> list:
         len_data = len(list_data)
-        len_chunk = len_data // num_chunks
+        len_chunk = len_data // num_chunks | 1
         return [
             list_data[index : index + len_chunk]
             for index in range(0, len_data, len_chunk)
@@ -92,14 +93,20 @@ class Translate:
         source_lang: str = "en",
         target_lang: str = "pt",
     ):
-        chunks = self._create_chuncks(sentenses, num_process)
-        with ProcessPoolExecutor() as exe:
-            process = [
-                exe.submit(
-                    self.translator, chunck, False, source_lang, target_lang
-                )
-                for chunck in chunks
-            ]
-        return list(
-            chain.from_iterable([result.result() for result in process])
-        )
+        if sentenses:
+            chunks = self._create_chuncks(sentenses, num_process)
+            with ProcessPoolExecutor() as exe:
+                process = [
+                    exe.submit(
+                        self.translator,
+                        chunck,
+                        False,
+                        source_lang,
+                        target_lang,
+                    )
+                    for chunck in chunks
+                ]
+            return list(
+                chain.from_iterable([result.result() for result in process])
+            )
+        return None
