@@ -131,6 +131,13 @@ dmypy.json
 
 # Vscode
 .vscode/
+.pytest_cache
 
 # Scripts
 move_to_android.txt
+inicio.txt
+celery.sqlite
+run_celery
+storage/
+pages/
+id_tasks/

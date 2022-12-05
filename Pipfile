@@ -11,6 +11,12 @@ pycryptodome = "*"
 ebooklib = "*"
 bs4 = "*"
 ipython = "*"
+celery = {extras = ["redis"], version = "*"}
+eventlet = "*"
+sqlalchemy = "*"
+jsonpickle = "*"
+psycopg2 = "*"
+flower = "*"
 
 [dev-packages]
 pylama = "*"
