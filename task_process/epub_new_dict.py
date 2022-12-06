@@ -17,6 +17,14 @@ def cover_analiser(cover: epub.EpubCover, index_page):
     return index_page, cover
 
 
+def ncx_analiser(ncx: epub.EpubNcx, index_page):
+    return index_page, ncx
+
+
+def image_analiser(image: epub.EpubImage, index_page):
+    return index_page, image
+
+
 def html_analiser(html: epub.EpubHtml, index_page):
     soup = BeautifulSoup(html.content, "html.parser")
     p_tags = soup.find_all("p")
@@ -41,5 +49,7 @@ DICT_EPUB_ITEM = {
     epub.EpubItem: item_analiser,
     epub.EpubNav: nav_analiser,
     epub.EpubCover: cover_analiser,
+    epub.EpubNcx: ncx_analiser,
+    epub.EpubImage: image_analiser,
     epub.EpubHtml: html_analiser,
 }

@@ -63,6 +63,14 @@ def assync(book):
         print()
 
 
+def sync_by_index(book, index):
+    item = list(book.get_items())[index]
+    tasks.parse_epub.delay(pickle.dumps(item), index)
+    print(f"Item: {index} enviado para processamento.")
+
+
 if __name__ == "__main__":
     book = reader_epub("data/Lord_of_the_Mysteries.epub")
-    assync(book)
+    sync_by_index(book, 1222)
+    sync_by_index(book, 1419)
+    # assync(book)

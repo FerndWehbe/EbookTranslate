@@ -141,3 +141,7 @@ run_celery
 storage/
 pages/
 id_tasks/
+
+
+data/*
+*.epub

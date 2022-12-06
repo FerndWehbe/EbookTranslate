@@ -13,6 +13,7 @@ app.conf.update(
     result_serializer="pickle",
     accept_content=["application/json", "application/x-python-serialize"],
     ignore_result=False,
+    result_extended=True,
 )
 
 
